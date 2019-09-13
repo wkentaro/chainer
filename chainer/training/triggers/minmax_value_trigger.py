@@ -49,6 +49,8 @@ class BestValueTrigger(object):
             return False
 
         stats = summary.compute_mean()
+        if not key in stats:
+            return False  # no value because of resume
         value = float(stats[key])  # copy to CPU
         self._init_summary()
 
